@@ -35,6 +35,9 @@ jobs:
         npm install -g pm2
         fi
 
+        # Kill any existing process on port 3000
+        sudo kill -9 $(sudo lsof -t -i:3000) 2>/dev/null || true
+
         REPO_URL="https://github.com/siresquire/efotsowoe-resume-app.git"
         BRANCH="main"
         REPO_DIR="$HOME/efotsowoe-resume-app"
@@ -55,6 +58,7 @@ jobs:
         npm install
 
         echo "Starting/restarting application..."
+        pm2 delete all || true
         pm2 start index.js --name "resume-app" --port 3000
         
         # Save PM2 process list and set to start on boot
