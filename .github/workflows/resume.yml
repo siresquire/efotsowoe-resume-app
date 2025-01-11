@@ -55,5 +55,9 @@ jobs:
         npm install
 
         echo "Starting/restarting application..."
-        pm2 restart index.js || pm2 start index.js
+        pm2 start index.js --name "resume-app" --port 3000
+        
+        # Save PM2 process list and set to start on boot
+        pm2 save
+        pm2 startup
         '
