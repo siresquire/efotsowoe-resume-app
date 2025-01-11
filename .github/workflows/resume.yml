@@ -55,5 +55,5 @@ jobs:
         npm install
 
         echo "Starting/restarting application..."
-        npm start dev
+        pm2 restart index.js || pm2 start index.js
         '
