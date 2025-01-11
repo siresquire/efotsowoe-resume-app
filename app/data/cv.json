@@ -1,0 +1,144 @@
+{
+	"name": "Johnson Nuviadenu",
+	"title": "DevOps & DevSecOps Engineer",
+	"email": "johnsonnuviadenu@gmail.com",
+	"residence": "Calgary, AB, Canada",
+	"nationality": "Canadian",
+	"profile": "Lifelong learner & Certified DevOps, Kubernetes, and AWS Cloud Professional with 7+ years of experience in automation, cloud security, CI/CD, and microservices. Skilled in Agile and DevOps methodologies, with a proven track record of designing hybrid and cloud-based infrastructures. Strong communicator and collaborator, seeking to leverage my expertise to add value to a business.",
+	"technologies": {
+		"cloud_and_infrastructure": "AWS (EKS, ECS, Lambda, etc.), Microsoft Azure, Terraform, Kubernetes, Docker, Git, GitHub Actions, Jenkins, Ansible, Linux (Ubuntu, RedHat)",
+		"devops_devsecops": "CI/CD Pipelines, AWS Security, Snyk, Trivy, SonarQube, Cloudflare, JumpCloud, Keda, Karpenter, Zabbix, Prometheus, Grafana, Fluentbit, Promtail, Loki",
+		"languages_and_databases": "Bash, JavaScript, Node.js, .NET Core, C#, HTML, CSS, SQL, RedShift, MongoDB, DynamoDB, MySQL, Postgresql"
+	},
+	
+	"social_portals": [
+	  {
+		"title": "Github", 
+		"url": "https://github.com/Efotsowoe" 
+	  },
+	  {
+		"title": "LinkedIn",
+		"url": "https://www.linkedin.com/in/johnson-n-devops/"
+	  }
+	],
+  
+	"interests": [
+	  "Cycling",
+	  "Long Walks",
+	  "Traveling",
+	  "Mentoring",
+	  "Reading",
+	  "Global Politics",
+	  "Soccer",
+	  "Teaching"
+	],
+  
+	"education": [
+	  {
+		"title": "Master of Science in Applied Economics",
+		"description": "A specialized program that integrates advanced economic theory and quantitative methods with real-world applications, equipping graduates to analyze complex economic issues and inform evidence-based policy and decision-making."
+	  },
+	  {
+		"title": "Bachelor of Arts in Mathematics and Economics",
+		"description": "A comprehensive program combining rigorous mathematical theory with economic principles, enabling critical thinking, quantitative analysis, and a deep understanding of resource allocation and market behavior."
+	  }
+	],
+
+	"certifications": [
+		{
+		  "title": "AWS Certified DevOps Engineer – Professional",
+		  "url": "https://www.credly.com/badges/8bdd569f-4b4c-46ef-af49-392f3e856582/public_url"
+		},
+		{
+		  "title": "AWS Certified Security – Specialty",
+		  "url": "https://www.credly.com/badges/79c499e0-fe68-48ea-9c65-cd3a5d00dc21"
+		},
+		{
+		  "title": "Certified Kubernetes Administrator (CKA)",
+		  "url": "https://www.credly.com/badges/d5e35632-b6d0-4bca-bbce-2f1760de9802/public_url"
+		},
+		{
+		  "title": "AWS Certified Solutions Architect – Associate (SAA)",
+		  "url": "https://www.credly.com/badges/b4323574-c7ac-48ec-83b8-4ebd34f7957f/public_url"
+		},
+		{
+		  "title": "Certified Information Systems Auditor (CISA)",
+		  "url": "https://www.credly.com/badges/63afcbd0-9132-45d1-aa3d-4ad93331240c"
+		}
+	  ],
+	
+	"achievements": [
+	  {
+		"title": "Seamless On-Premises-to-Cloud Transformation",
+		"description": "Successfully migrated a company from on-premises setups to the cloud, ensuring seamless, scalable, and efficient operations."
+	  },
+	  {
+		"title": "Optimized Application Migrations Across Multiple Platforms",
+		"description": "Led application migrations between platforms (ECS, EKS, Elastic Beanstalk, etc), optimizing performance and reliability."
+	  },
+	  {
+		"title": "Terraform Guru: Infrastructure as Code Mastery",
+		"description": "Mastered the art of codifying infrastructure using Terraform, making deployment and management a breeze for organizations!"
+	  },
+	  {
+		"title": "Architect of Scalable CI/CD Pipelines",
+		"description": "Designed and implemented robust, scalable CI/CD pipelines that streamline development and deployment processes."
+	  },
+	  {
+		"title": "Tailor-Made Infrastructure Solutions from the Ground Up",
+		"description": "Engineered entire infrastructure solutions from the ground up, tailored to meet specific business needs."
+	  },
+	  {
+		"title": "Comprehensive Security & Reporting Specialist",
+		"description": "Secured infrastructures and applications, delivering comprehensive security reporting to safeguard company assets."
+	  },
+	  {
+		"title": "Cloud Cost Optimization Expert",
+		"description": "Managed and optimized cloud operational costs over seven-plus years as a DevOps Engineer, saving companies thousands of dollars per day without compromising performance."
+	  },
+	  {
+		"title": "Champion of Best-in-Class Cloud Services",
+		"description": "Led initiatives to adopt the best cloud services, enhancing overall efficiency and capabilities."
+	  },
+	  {
+		"title": "Data Pipeline Innovator (RedShift & Snowflake)",
+		"description": "Constructed powerful data pipelines using RedShift and Snowflake, enabling businesses to harness the power of their data."
+	  }
+	],
+  
+	"job_history": [
+	  {
+		"employer": "Integrity Advocate",
+		"date": "May 2024 – Present",
+		"role": "Own the CICD, Platform Security, SOC 2, and Infrastructure processes. Migrated from Elastic Beanstalk to AWS ECS and EKS, implemented Terraform for IaC, integrated AWS Organizations & IAM Identity Center, built Github Actions pipelines to deploy applications, and reduced daily cloud spend via cost optimization."
+	  },
+	  {
+		"employer": "Pagefreezer Software",
+		"date": "Nov 2022 – May 2024",
+		"role": "Deployed AWS Security tools (GuardDuty, Inspector, Config), optimized CI/CD with GitHub Actions, maintained 99% uptime using Prometheus/Grafana, and ensured high availability of EKS clusters."
+	  },
+	  {
+		"employer": "Neo Financial Technologies",
+		"date": "Jan 2021 – Oct 2022",
+		"role": "Used AWS, Terraform, Jenkins, Ansible to scale infrastructure and deployed applications, reduced deployment failures, enforced SSO, and enhanced the security posture with VPC/IAM best practices."
+	  },
+	  {
+		"employer": "Freshly",
+		"date": "Jun 2018 – Dec 2020",
+		"role": "Developed automated deployments with Terraform, performed continuous integration and automated testing, and implemented end-to-end monitoring with Prometheus/Grafana."
+	  },
+	  {
+		"employer": "GN Bank",
+		"date": "May 2015 – Jun 2018",
+		"role": "Optimized server configs, led VMware migrations, automated deployments with Ansible/Puppet, maintained 99% uptime, and improved user support with proactive monitoring."
+	  }
+	],
+  
+	"spoken_languages": [
+	  {
+		"language": "English",
+		"level": "fluent"
+	  }
+	]
+  }
+  

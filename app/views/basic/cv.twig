@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resume of {{name}}</title>
+	<link rel="stylesheet" href="{{meta.root}}/style.css">
+	<link rel="stylesheet" href="{{meta.root}}/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+</head>
+<body>
+	<header class="main">
+		<h1>{{name}}</h1>
+		<h2>{{title}}</h2>
+	</header>
+
+	<header class="sub">
+		<div class="item">Nationality: {{nationality}}</div>
+		<div class="item">Email: {{email}}</div>
+		<div class="item">Residency: {{residence}}</div>
+	</header>
+
+	<aside>
+		<img src="{{meta.root}}/profile.jpg" alt="">
+		<article class="entry">
+			<h3>Social Profiles</h3>
+			{% for portal in social_portals %}
+				<p><a href="{{portal.url}}" target="_blank" rel="noopener noreferrer">{{portal.title}}</a></p>
+			{% endfor %}
+		</article>
+
+		<article class="entry">
+			<h3>Technologies</h3>
+			{% for key, technology in technologies %}
+				<h4>{{key|capitalize}}</h4>
+				<p>{{technology}}</p>
+			{% endfor %}
+		</article>
+
+		<article class="entry">
+		<h3>Personal Interests</h3>
+		<ul>
+			{% for interest in interests %}
+			<li>{{ interest }}</li>
+			{% endfor %}
+		</ul>
+		</article>
+
+
+		<article class="entry">
+			<h3>Spoken languages</h3>
+			<ul>
+				{% for lang in spoken_languages %}
+					<li>{{lang.language}} – {{lang.level}}</li>
+				{% endfor %}
+			</ul>
+		</article>
+	</aside>
+
+	<div class="main">
+		<article class="entry">
+			<h3>Professional Profile</h3>
+			<p>{{profile}}</p>
+		</article>
+
+		<article class="entry">
+			<h3>Professional Experience</h3>
+			<ul>
+				{% for job in job_history %}
+					<li>
+						<strong>{{job.employer}}</strong><br>
+						{{job.date}}<br>
+						{{job.role}}
+					</li>
+				{% endfor %}
+			</ul>
+		</article>
+
+		<article class="entry">
+			<h3>List of my achievements</h3>
+			<ul>
+				{% for achieve in achievements %}
+					<li>
+						<strong>{{achieve.title}}</strong>
+						<br>
+						{{achieve.description}}
+					</li>
+				{% endfor %}
+			</ul>
+		</article>
+
+		<article class="entry">
+			<h3>Education</h3>
+			<ul>
+				{% for edu in education %}
+					<li>
+						<strong>{{edu.title}}</strong>
+						<br>
+						{{edu.description}}
+					</li>
+				{% endfor %}
+			</ul>
+		</article>
+
+		<article class="entry">
+			<h3>Certifications</h3>
+			<ul>
+				{% for cert in certifications %}
+					<li>
+						<strong>{{cert.title}}</strong>
+						<br>
+						<a href="{{cert.url}}" target="_blank" rel="noopener noreferrer">Confirm Certification</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</article>
+
+		<article>
+			<h3>Fun fact</h3>
+			<p>This code was specifically written by <strong>Johnson Nuviadenu</strong> for a take home Assignment from <a href="https://www.floma.co/" target="_blank" rel="noopener noreferrer">FLOMA</a></p>
+		</article>
+	</div>
+</body>
+</html>
