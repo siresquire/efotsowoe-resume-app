@@ -35,9 +35,9 @@ jobs:
         npm install -g pm2
         fi
 
-        REPO_URL="https://github.com/afkzoro/github-aws-ec2.git"
+        REPO_URL="https://github.com/siresquire/efotsowoe-resume-app.git"
         BRANCH="main"
-        REPO_DIR="$HOME/github-aws-ec2"
+        REPO_DIR="$HOME/efotsowoe-resume-app"
 
         if [ -d "$REPO_DIR/.git" ]; then
           cd "$REPO_DIR"
@@ -47,10 +47,10 @@ jobs:
           cd "$REPO_DIR"
         fi
 
-        cd "$REPO_DIR/simple-web-server"
+        cd "$REPO_DIR/app"
         npm install
 
-        cd ~/github-aws-ec2/simple-web-server
+        cd ~/efotsowoe-resume-app/app
         git pull origin main
         npm install
 
