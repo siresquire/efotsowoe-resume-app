@@ -3,6 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -30,9 +31,14 @@ jobs:
         fi
         nvm install node
 
-        REPO_URL="https://github.com/siresquire/efotsowoe-resume-app.git"
+        echo "Installing PM2..."
+        if ! command -v pm2 &> /dev/null; then
+        npm install -g pm2
+        fi
+
+        REPO_URL="https://github.com/afkzoro/github-aws-ec2.git"
         BRANCH="main"
-        REPO_DIR="$HOME/efotsowoe-resume-app"
+        REPO_DIR="$HOME/github-aws-ec2"
 
         if [ -d "$REPO_DIR/.git" ]; then
           cd "$REPO_DIR"
@@ -42,14 +48,13 @@ jobs:
           cd "$REPO_DIR"
         fi
 
-        cd "$REPO_DIR/app"
+        cd "$REPO_DIR/simple-web-server"
         npm install
 
-        cd ~/efotsowoe-resume-app/app
+        cd ~/github-aws-ec2/simple-web-server
         git pull origin main
         npm install
 
         echo "Starting/restarting application..."
-        npm audit fix --force
-        npm start dev
+        pm2 restart server.js || pm2 start server.js
         '
