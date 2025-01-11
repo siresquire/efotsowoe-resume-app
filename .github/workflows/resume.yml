@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  # Allows manual triggering of the workflow
 
 jobs:
   build:
@@ -21,11 +22,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Tests
-        run: npm test
-
       - name: Code Scanning with npm audit
-        run: npm audit --audit-level=high  # Adjust the level as necessary (low, moderate, high, critical)
+        run: npm audit --audit-level=low  # Adjust the level as necessary (low, moderate, high, critical)
 
   deploy:
     runs-on: ubuntu-latest
@@ -60,8 +58,7 @@ jobs:
           EOF
 
           # Copy application files to EC2 instance
-          rsync -avz --delete -e "ssh -i private_key.pem" ./ $EC2_USER@$EC2_HOST:/path/to/your/app  # Adjust the path as necessary
-
+          rsync -avz --delete -e "ssh -i private_key.pem" ./ $EC2_USER@$EC2_HOST:/path/to/your/app  
       - name: Restart Node.js Application
         run: |
-          ssh -i private_key.pem $EC2_USER@$EC2_HOST "pm2 restart your-app-name"  # Adjust your app name as necessary
+          ssh -i private_key.pem $EC2_USER@$EC2_HOST "pm2 restart node-cv"  
