@@ -31,6 +31,11 @@ jobs:
         fi
         nvm install node
 
+        echo "Installing PM2..."
+        if ! command -v pm2 &> /dev/null; then
+        npm install -g pm2
+        fi
+
         REPO_URL="https://github.com/siresquire/efotsowoe-resume-app.git"
         BRANCH="main"
         REPO_DIR="$HOME/efotsowoe-resume-app"
