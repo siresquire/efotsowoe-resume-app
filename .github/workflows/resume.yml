@@ -57,5 +57,6 @@ jobs:
         npm audit
 
         echo "Starting/restarting application..."
-        pm2 restart index.js || pm2 start index.js
+        pm2 start index.js || pm2 restart index.js
+        pm2 save
         '
