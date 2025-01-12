@@ -54,6 +54,8 @@ jobs:
         cd ~/efotsowoe-resume-app/app
         git pull origin main
         npm install
+
+        echo "Running npm audit....."
         npm audit
 
         echo "Starting/restarting application...
