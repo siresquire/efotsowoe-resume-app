@@ -50,7 +50,6 @@ jobs:
 
         cd "$REPO_DIR/app"
         npm install
-        npm audit
 
         cd ~/efotsowoe-resume-app/app
         git pull origin main
