@@ -1,64 +1,57 @@
-name: CI/CD Pipeline
+name: Deploy to EC2
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:  # Allows manual triggering of the workflow
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'  # Specify your Node.js version
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Code Scanning with npm audit
-        run: npm audit --audit-level=low  # Adjust the level as necessary (low, moderate, high, critical)
-
   deploy:
     runs-on: ubuntu-latest
-    needs: build  # Ensure deployment only happens after build job is successful
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    
+    - name: Deploy to EC2
+      env:
+        PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
+        HOST: ${{ secrets.EC2_HOST }}
+        USER: ${{ secrets.EC2_USER }}
+      run: |
+        echo "$PRIVATE_KEY" > github-ec2.pem && chmod 600 github-ec2.pem
+        ssh -o StrictHostKeyChecking=no -i github-ec2.pem ${USER}@${HOST} '
+        echo "Current directory: $(pwd)"
+        echo "Listing home directory:"
+        ls -la ~
 
-      - name: Deploy to EC2 Instance
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}  # Add your SSH key as a secret in GitHub
-          EC2_HOST: ${{ secrets.EC2_HOST }}  # Your EC2 instance public IP or hostname
-          EC2_USER: ${{ secrets.EC2_USER }}  # Typically 'ubuntu' or 'ec2-user'
-        run: |
-          echo "$SSH_PRIVATE_KEY" > private_key.pem
-          chmod 600 private_key.pem
+        echo "Installing Node.js..."
+        if ! command -v nvm &> /dev/null; then
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        fi
+        nvm install node
 
-          # Install Node.js and PM2 if not already installed
-          ssh -i private_key.pem $EC2_USER@$EC2_HOST << 'EOF'
-            # Update package index and install Node.js and npm
-            sudo apt-get update
-            sudo apt-get install -y nodejs npm
-            
-            # Install PM2 globally
-            sudo npm install -g pm2
-            
-            # Check installations (optional)
-            node -v
-            npm -v
-            pm2 -v
-          EOF
+        REPO_URL="https://github.com/siresquire/efotsowoe-resume-app.git"
+        BRANCH="main"
+        REPO_DIR="$HOME/efotsowoe-resume-app"
 
-          # Copy application files to EC2 instance
-          rsync -avz --delete -e "ssh -i private_key.pem" ./ $EC2_USER@$EC2_HOST:/path/to/your/app  
-      - name: Restart Node.js Application
-        run: |
-          ssh -i private_key.pem $EC2_USER@$EC2_HOST "pm2 restart node-cv"  
+        if [ -d "$REPO_DIR/.git" ]; then
+          cd "$REPO_DIR"
+          git pull origin "$BRANCH"
+        else
+          git clone "$REPO_URL" "$REPO_DIR"
+          cd "$REPO_DIR"
+        fi
+
+        cd "$REPO_DIR/app"
+        npm install
+        npm audit
+
+        cd ~/efotsowoe-resume-app/app
+        git pull origin main
+        npm install
+        npm audit
+
+        echo "Starting/restarting application..."
+        npm start dev
+        '
